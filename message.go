@@ -241,6 +241,9 @@ type Message struct {
 	// For a data sent by a Web App.
 	WebAppData *WebAppData `json:"web_app_data,omitempty"`
 
+	UserShared *UserSharedUpdate `json:"user_shared,omitempty"`
+	ChatShared *ChatSharedUpdate `json:"chat_shared,omitempty"`
+
 	// For a service message, represents the content of a service message,
 	// sent whenever a user in the chat triggers a proximity alert set by another user.
 	ProximityAlert *ProximityAlert `json:"proximity_alert_triggered,omitempty"`
@@ -365,7 +368,6 @@ func (m *Message) FromChannel() bool {
 // Service messages are automatically sent messages, which
 // typically occur on some global action. For instance, when
 // anyone leaves the chat or chat title changes.
-//
 func (m *Message) IsService() bool {
 	fact := false
 
@@ -386,7 +388,6 @@ func (m *Message) IsService() bool {
 //
 // It's safer than manually slicing Text because Telegram uses
 // UTF-16 indices whereas Go string are []byte.
-//
 func (m *Message) EntityText(e MessageEntity) string {
 	text := m.Text
 	if text == "" {

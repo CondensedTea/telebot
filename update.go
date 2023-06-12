@@ -184,6 +184,14 @@ func (b *Bot) ProcessUpdate(u Update) {
 			b.handle(OnWebApp, c)
 		}
 
+		if m.ChatShared != nil {
+			b.handle(OnChatShared, c)
+		}
+
+		if m.UserShared != nil {
+			b.handle(OnUserShared, c)
+		}
+
 		if m.ProximityAlert != nil {
 			b.handle(OnProximityAlert, c)
 			return

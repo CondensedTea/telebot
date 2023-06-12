@@ -2,29 +2,28 @@
 //
 // Example:
 //
-//		package main
+//	package main
 //
-//		import (
-//			"time"
-//			tele "gopkg.in/telebot.v3"
-//		)
+//	import (
+//		"time"
+//		tele "gopkg.in/telebot.v3"
+//	)
 //
-//		func main() {
-//			b, err := tele.NewBot(tele.Settings{
-//				Token:  "...",
-//				Poller: &tele.LongPoller{Timeout: 10 * time.Second},
-//			})
-//			if err != nil {
-//				return
-//			}
-//
-//			b.Handle("/start", func(c tele.Context) error {
-//				return c.Send("Hello world!")
-//			})
-//
-//			b.Start()
+//	func main() {
+//		b, err := tele.NewBot(tele.Settings{
+//			Token:  "...",
+//			Poller: &tele.LongPoller{Timeout: 10 * time.Second},
+//		})
+//		if err != nil {
+//			return
 //		}
 //
+//		b.Handle("/start", func(c tele.Context) error {
+//			return c.Send("Hello world!")
+//		})
+//
+//		b.Start()
+//	}
 package telebot
 
 import "errors"
@@ -43,7 +42,6 @@ const DefaultApiURL = "https://api.telegram.org"
 //
 // For convenience, all Telebot-provided endpoints start with
 // an "alert" character \a.
-//
 const (
 	// Basic message handlers.
 	OnText              = "\atext"
@@ -97,6 +95,8 @@ const (
 	OnProximityAlert  = "\aproximity_alert_triggered"
 	OnAutoDeleteTimer = "\amessage_auto_delete_timer_changed"
 	OnWebApp          = "\aweb_app"
+	OnChatShared      = "\achat_shared"
+	OnUserShared      = "\achat_shared"
 
 	OnVideoChatStarted      = "\avideo_chat_started"
 	OnVideoChatEnded        = "\avideo_chat_ended"
